@@ -23,25 +23,30 @@ const Home: React.FC = () => {
             await signInWithGoogle();
         }
 
-        Router.push('/rooms/new')
+        Router.push('/rooms/new');
     }
 
     async function handleJoinRoom(event: FormEvent) {
         event.preventDefault();
-    
+
         if (roomCode.trim() === '') {
-          return;
+            return;
         }
-    
+
         const roomRef = await database.ref(`rooms/${roomCode}`).get();
-    
+
         if (!roomRef.exists()) {
-          alert('Room does not exists.');
-          return;
+            alert('Room does not exists.');
+            return;
         }
-    
+
+        if (roomRef.val().endedAt) {
+            alert('Room already closed.');
+            return;
+        }
+
         Router.push(`/rooms/${roomCode}`);
-      }
+    }
 
     return (
         <div id={styles.pageAuth}>
@@ -66,7 +71,7 @@ const Home: React.FC = () => {
                     <div className={styles.separator}>
                         ou entre em uma sala{' '}
                     </div>
-                    <form  onSubmit={handleJoinRoom}>
+                    <form onSubmit={handleJoinRoom}>
                         <input
                             type="text"
                             placeholder="Digite o codigo da sala"

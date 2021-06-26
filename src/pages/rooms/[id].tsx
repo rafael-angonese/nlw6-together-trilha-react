@@ -127,8 +127,8 @@ const Room: React.FC = () => {
                                     author={question.author}
                                 >
                                     <button
-                                        className={`like-button ${
-                                            question.likeId ? 'liked' : ''
+                                        className={`${styles.likeButton} ${
+                                            question.likeId ? styles.liked : ''
                                         }`}
                                         type="button"
                                         aria-label="Marcar como gostei"
