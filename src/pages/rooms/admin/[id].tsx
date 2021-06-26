@@ -3,6 +3,8 @@ import { useRouter } from 'next/router';
 import Router from 'next/router';
 import logoImg from '../../../assets/images/logo.svg';
 import deleteImg from '../../../assets/images/delete.svg';
+import checkImg from '../../../assets/images/check.svg';
+import answerImg from '../../../assets/images/answer.svg';
 
 import { Button } from '../../../components/Button';
 import { RoomCode } from '../../../components/RoomCode';
@@ -48,6 +50,18 @@ const Room: React.FC = () => {
         }
     }
 
+    async function handleCheckQuestionAsAnswered(questionId: string) {
+        await database.ref(`rooms/${roomId}/questions/${questionId}`).update({
+            isAnswered: true
+        });
+    }
+
+    async function handleHighlightQuestion(questionId: string) {
+        await database.ref(`rooms/${roomId}/questions/${questionId}`).update({
+            isHighlighted: true
+        });
+    }
+
     return (
         <div id={styles.pageRoom}>
             <header>
@@ -78,7 +92,39 @@ const Room: React.FC = () => {
                                     key={question.id}
                                     content={question.content}
                                     author={question.author}
+                                    isAnswered={question.isAnswered}
+                                    isHighlighted={question.isHighlighted}
                                 >
+                                    {!question.isAnswered && (
+                                        <>
+                                            <button
+                                                type="button"
+                                                onClick={() =>
+                                                    handleCheckQuestionAsAnswered(
+                                                        question.id
+                                                    )
+                                                }
+                                            >
+                                                <Image
+                                                    src={checkImg}
+                                                    alt="Marcar pergunta como respondida"
+                                                />
+                                            </button>
+                                            <button
+                                                type="button"
+                                                onClick={() =>
+                                                    handleHighlightQuestion(
+                                                        question.id
+                                                    )
+                                                }
+                                            >
+                                                <Image
+                                                    src={answerImg}
+                                                    alt="Dar destaque à pergunta"
+                                                />
+                                            </button>
+                                        </>
+                                    )}
                                     <button
                                         type="button"
                                         onClick={() =>
