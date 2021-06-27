@@ -30,6 +30,7 @@ Este é um projeto desenvolvido durante a Next Level Week Together da Rocketseat
 |   ✔️   | Marcar pergunta como destaque      |
 |   ✔️   | Marcar pergunta como respondida    |
 |   ✔️   | Remover uma pergunta               |
+|   ✔️   | Encerar uma sala                   |
 |   ✔️   | Permissão de perfil                |
 |   ✔️   | Contexto de autenticação           |
 |   ✔️   | Recuperar o estado de autenticação |
