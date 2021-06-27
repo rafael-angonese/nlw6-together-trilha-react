@@ -44,7 +44,7 @@ const NewRoom: React.FC = () => {
             </aside>
             <main>
                 <div className={styles.mainContent}>
-                    <Image src={logoImg} alt="Letmeask" />
+                    <Image src={logoImg} alt="Letmeask" onClick={() => Router.push('/home')} />
                     <h2>Criar uma nova sala</h2>
                     <form onSubmit={handleCreateRoom}>
                         <input

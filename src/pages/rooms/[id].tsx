@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { useRouter } from 'next/router';
+import Router from 'next/router';
 import { FormEvent, useState } from 'react';
 import logoImg from '../../assets/images/logo.svg';
 
@@ -79,7 +80,11 @@ const Room: React.FC = () => {
         <div id={styles.pageRoom}>
             <header>
                 <div className={styles.content}>
-                    <Image src={logoImg} alt="Letmeask" />
+                    <Image
+                        src={logoImg}
+                        alt="Letmeask"
+                        onClick={() => Router.push('/home')}
+                    />
                     <RoomCode code={roomId} />
                 </div>
             </header>

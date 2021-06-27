@@ -66,7 +66,11 @@ const Room: React.FC = () => {
         <div id={styles.pageRoom}>
             <header>
                 <div className={styles.content}>
-                    <Image src={logoImg} alt="Letmeask" />
+                    <Image
+                        src={logoImg}
+                        alt="Letmeask"
+                        onClick={() => Router.push('/home')}
+                    />
                     <div>
                         <RoomCode code={roomId} />
                         <Button isOutlined onClick={handleEndRoom}>

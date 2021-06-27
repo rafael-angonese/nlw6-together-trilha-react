@@ -66,7 +66,7 @@ const Home: React.FC = () => {
                         className={styles.createRoom}
                     >
                         <Image src={googleIconImg} alt="Logo do Google" />
-                        Crie sua sla com Google
+                        Crie sua sala com Google
                     </button>
                     <div className={styles.separator}>
                         ou entre em uma sala{' '}
